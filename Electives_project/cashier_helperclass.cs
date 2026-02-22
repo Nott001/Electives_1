@@ -12,35 +12,54 @@ namespace Electives_project
         public List<string> ItemNames = new List<string>();
         public List<decimal> ItemPrices = new List<decimal>();
 
-        public void AddToTransaction(string name, decimal price)
+        public int CurrentSaleId { get; set; } = -1;
+
+        // Global Session Data
+        public static int LoggedInCashierId { get; set; } = 1;
+        public static string LoggedInCashierName { get; set; } = "Unknown";
+
+        // Use a class or struct to hold item details for better grouping
+        public class CartItem
         {
-            ItemNames.Add(name);
-            ItemPrices.Add(price);
+            public int ProductId { get; set; }
+            public string Name { get; set; }
+            public int Quantity { get; set; }
+            public decimal UnitPrice { get; set; }
+            public decimal Subtotal => Quantity * UnitPrice;
         }
 
-        public void RemoveLastItem()
+        public (decimal subtotal, decimal discount, decimal total, decimal vat)
+        GetCalculations(decimal subtotal, bool isSenior, bool isPWD, bool isVoucher)
         {
-            if (ItemNames.Count > 0)
+            decimal discountPercent = 0;
+
+            if (isSenior || isPWD) discountPercent += 0.20m;
+            if (isVoucher) discountPercent += 0.10m;
+
+            decimal discountAmount = subtotal * discountPercent;
+
+            // VAT applied AFTER discount
+            decimal vatAmount = (subtotal - discountAmount) * 0.12m;
+
+            decimal total = subtotal - discountAmount + vatAmount;
+
+            return (subtotal, discountAmount, total, vatAmount);
+        }
+
+
+        public List<CartItem> Cart = new List<CartItem>();
+
+        public void AddOrUpdateProduct(int id, string name, decimal price)
+        {
+            var existingItem = Cart.FirstOrDefault(i => i.ProductId == id);
+            if (existingItem != null)
             {
-                ItemNames.RemoveAt(ItemNames.Count - 1);
-                ItemPrices.RemoveAt(ItemPrices.Count - 1);
+                existingItem.Quantity += 1; // Increment quantity if found
             }
-        }
-
-        public void ClearTransaction()
-        {
-            ItemNames.Clear();
-            ItemPrices.Clear();
-        }
-
-        // Calculation logic
-        public (decimal subtotal, decimal discount, decimal total) GetCalculations(bool isDiscounted)
-        {
-            decimal subtotal = ItemPrices.Sum();
-            decimal discount = isDiscounted ? subtotal * 0.20m : 0;
-            decimal total = subtotal - discount;
-
-            return (subtotal, discount, total);
+            else
+            {
+                Cart.Add(new CartItem { ProductId = id, Name = name, UnitPrice = price, Quantity = 1 });
+            }
         }
     }
 }
