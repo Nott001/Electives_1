@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
+using QRCoder;
 using ZXing.QrCode.Internal;
-
 namespace Electives_project
 {
     public partial class cashier_interface : Form
@@ -37,6 +37,10 @@ namespace Electives_project
         private void cashier_interface_Load(object sender, EventArgs e)
         {
             barcode_txtbox.Focus();
+            cash_txtbox.Hide();
+            change_txtbox.Hide();
+            cash_label.Hide();
+            change_label.Hide();
         }
 
         private void SetupNumpad()
@@ -118,6 +122,8 @@ namespace Electives_project
                 RefreshTotals();    // Calculate totals
                 barcode_txtbox.Clear();
                 barcode_txtbox.Focus();
+
+
             }
             catch (Exception ex)
             {
@@ -153,23 +159,11 @@ namespace Electives_project
             db.cashier_sql_connection.Close();
         }
 
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void circlePictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void clear_button_Click(object sender, EventArgs e)
         {
             barcode_txtbox.Clear();
             barcode_txtbox.Focus();
         }
-
 
         private void delete_button_Click(object sender, EventArgs e)
         {
@@ -257,7 +251,12 @@ namespace Electives_project
                 return;
             }
 
-            try
+            if (cash_checkbox.Checked)
+            {
+                change_txtbox.Text = cashier_helperclass.CalculateChange(cash_txtbox.Text, total_txtbox.Text);
+            }
+
+                try
             {
                 db.cashier_connString();
 
@@ -290,6 +289,8 @@ namespace Electives_project
                 receipt.discount_txtbox.Text = discount_txtbox.Text;
                 receipt.vat_txtbox.Text = vat_txtbox.Text;
                 receipt.total_amount_txtbox.Text = total_txtbox.Text;
+                receipt.cash_txtbox.Text = cash_txtbox.Text;
+                receipt.change_txtbox.Text = change_txtbox.Text;
                 receipt.LoadItems(dataGridView1);
 
                 receipt.ShowDialog();
@@ -303,8 +304,6 @@ namespace Electives_project
                 MessageBox.Show("Payment Processing Error: " + ex.Message);
             }
         }
-
-
 
         private void barcode_txtbox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -358,6 +357,8 @@ namespace Electives_project
             items_txtbox.Clear();
             barcode_txtbox.Clear();
             vat_txtbox.Clear();
+            cash_txtbox.Clear();
+            change_txtbox.Clear();
             senior_discount_checkbox.Checked = false;
             pwd_discount_checkbox.Checked = false;
             coupons_discount_checkbox.Checked = false;
@@ -410,6 +411,61 @@ namespace Electives_project
                 barcode_txtbox.Clear();
                 MessageBox.Show("No active transaction to cancel.");
             }
+        }
+
+        private void inventory_button_Click(object sender, EventArgs e)
+        {
+            Inventory_management inventory = new Inventory_management();
+            inventory.ShowDialog();
+            this.Hide();
+        }
+
+        private void receipt_button_Click(object sender, EventArgs e)
+        {
+            sales_reports sales_Reports = new sales_reports();
+            sales_Reports.ShowDialog();
+        }
+
+        private void QR_checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            string paymentInfo = $"Payment Total: {total_txtbox.Text}";
+
+            using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
+            using (QRCodeData qrCodeData = qrGenerator.CreateQrCode(paymentInfo, QRCodeGenerator.ECCLevel.Q))
+            using (PngByteQRCode qrCode = new PngByteQRCode(qrCodeData))
+            {
+                byte[] qrCodeAsPngByteArr = qrCode.GetGraphic(20);
+
+                // Remove the 'using' from MemoryStream here to ensure the Image stays valid
+                var ms = new System.IO.MemoryStream(qrCodeAsPngByteArr);
+
+                qr_form qr_form = new qr_form();
+                qr_form.qr_picturebox.Image = Image.FromStream(ms);
+
+                // --- ADD THIS LINE ---
+                qr_form.ShowDialog(); // Use ShowDialog() if you want the user to close it before finishing
+            }
+        }
+
+        private void cash_checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cash_checkbox.Checked)
+            {
+                cash_txtbox.Show();
+                change_txtbox.Show();
+                cash_label.Show();
+                change_label.Show();
+
+                enter_cash enter_cash = new enter_cash(this);
+                enter_cash.ShowDialog();
+
+            }
+        }
+
+        private void card_checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            swipe_card swipe_Card = new swipe_card();
+            swipe_Card.ShowDialog();
         }
     }
 }

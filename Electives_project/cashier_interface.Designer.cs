@@ -32,6 +32,10 @@
             label10 = new Label();
             label1 = new Label();
             groupBox2 = new GroupBox();
+            change_txtbox = new TextBox();
+            cash_txtbox = new TextBox();
+            change_label = new Label();
+            cash_label = new Label();
             label11 = new Label();
             vat_txtbox = new TextBox();
             total_txtbox = new TextBox();
@@ -46,10 +50,11 @@
             label4 = new Label();
             label3 = new Label();
             groupBox3 = new GroupBox();
-            cancel_transaction_button = new Button();
-            exit_button = new Button();
+            sales_reports_button = new Button();
             dataGridView1 = new DataGridView();
             process_payment_button = new Button();
+            cancel_transaction_button = new Button();
+            exit_button = new Button();
             cashier_name_txtbox = new TextBox();
             date_today_picker = new DateTimePicker();
             circlePictureBox2 = new CirclePictureBox();
@@ -79,6 +84,7 @@
             QR_checkbox = new CheckBox();
             label2 = new Label();
             label12 = new Label();
+            inventory_button = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -99,7 +105,6 @@
             groupBox1.Size = new Size(1900, 136);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
-            groupBox1.Enter += groupBox1_Enter;
             // 
             // label10
             // 
@@ -125,6 +130,10 @@
             // groupBox2
             // 
             groupBox2.BackColor = Color.White;
+            groupBox2.Controls.Add(change_txtbox);
+            groupBox2.Controls.Add(cash_txtbox);
+            groupBox2.Controls.Add(change_label);
+            groupBox2.Controls.Add(cash_label);
             groupBox2.Controls.Add(label11);
             groupBox2.Controls.Add(vat_txtbox);
             groupBox2.Controls.Add(total_txtbox);
@@ -138,17 +147,59 @@
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(label3);
-            groupBox2.Location = new Point(12, 521);
+            groupBox2.Location = new Point(12, 463);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(745, 381);
+            groupBox2.Size = new Size(745, 439);
             groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
+            // 
+            // change_txtbox
+            // 
+            change_txtbox.BackColor = Color.White;
+            change_txtbox.BorderStyle = BorderStyle.FixedSingle;
+            change_txtbox.Enabled = false;
+            change_txtbox.Font = new Font("Segoe UI", 17.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            change_txtbox.Location = new Point(463, 383);
+            change_txtbox.Name = "change_txtbox";
+            change_txtbox.Size = new Size(197, 38);
+            change_txtbox.TabIndex = 16;
+            // 
+            // cash_txtbox
+            // 
+            cash_txtbox.BackColor = Color.White;
+            cash_txtbox.BorderStyle = BorderStyle.FixedSingle;
+            cash_txtbox.Enabled = false;
+            cash_txtbox.Font = new Font("Segoe UI", 17.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cash_txtbox.Location = new Point(463, 337);
+            cash_txtbox.Name = "cash_txtbox";
+            cash_txtbox.Size = new Size(197, 38);
+            cash_txtbox.TabIndex = 15;
+            // 
+            // change_label
+            // 
+            change_label.AutoSize = true;
+            change_label.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            change_label.Location = new Point(60, 386);
+            change_label.Name = "change_label";
+            change_label.Size = new Size(103, 30);
+            change_label.TabIndex = 14;
+            change_label.Text = "Change: ";
+            // 
+            // cash_label
+            // 
+            cash_label.AutoSize = true;
+            cash_label.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cash_label.Location = new Point(60, 344);
+            cash_label.Name = "cash_label";
+            cash_label.Size = new Size(62, 25);
+            cash_label.TabIndex = 13;
+            cash_label.Text = "Cash: ";
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(60, 267);
+            label11.Location = new Point(60, 230);
             label11.Name = "label11";
             label11.Size = new Size(106, 25);
             label11.TabIndex = 12;
@@ -160,7 +211,7 @@
             vat_txtbox.BorderStyle = BorderStyle.FixedSingle;
             vat_txtbox.Enabled = false;
             vat_txtbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            vat_txtbox.Location = new Point(463, 265);
+            vat_txtbox.Location = new Point(463, 228);
             vat_txtbox.Name = "vat_txtbox";
             vat_txtbox.Size = new Size(197, 33);
             vat_txtbox.TabIndex = 11;
@@ -171,7 +222,7 @@
             total_txtbox.BorderStyle = BorderStyle.FixedSingle;
             total_txtbox.Enabled = false;
             total_txtbox.Font = new Font("Segoe UI", 17.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            total_txtbox.Location = new Point(463, 325);
+            total_txtbox.Location = new Point(463, 290);
             total_txtbox.Name = "total_txtbox";
             total_txtbox.Size = new Size(197, 38);
             total_txtbox.TabIndex = 10;
@@ -182,7 +233,7 @@
             discount_txtbox.BorderStyle = BorderStyle.FixedSingle;
             discount_txtbox.Enabled = false;
             discount_txtbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            discount_txtbox.Location = new Point(463, 220);
+            discount_txtbox.Location = new Point(463, 186);
             discount_txtbox.Name = "discount_txtbox";
             discount_txtbox.Size = new Size(197, 33);
             discount_txtbox.TabIndex = 9;
@@ -193,7 +244,7 @@
             subtotal_txtbox.BorderStyle = BorderStyle.FixedSingle;
             subtotal_txtbox.Enabled = false;
             subtotal_txtbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            subtotal_txtbox.Location = new Point(463, 170);
+            subtotal_txtbox.Location = new Point(463, 145);
             subtotal_txtbox.Name = "subtotal_txtbox";
             subtotal_txtbox.Size = new Size(197, 33);
             subtotal_txtbox.TabIndex = 8;
@@ -204,7 +255,7 @@
             items_txtbox.BorderStyle = BorderStyle.FixedSingle;
             items_txtbox.Enabled = false;
             items_txtbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            items_txtbox.Location = new Point(463, 97);
+            items_txtbox.Location = new Point(463, 87);
             items_txtbox.Name = "items_txtbox";
             items_txtbox.Size = new Size(197, 33);
             items_txtbox.TabIndex = 7;
@@ -213,7 +264,7 @@
             // 
             label9.BackColor = SystemColors.ActiveCaptionText;
             label9.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(60, 310);
+            label9.Location = new Point(60, 275);
             label9.Name = "label9";
             label9.Size = new Size(600, 2);
             label9.TabIndex = 6;
@@ -222,7 +273,7 @@
             // 
             label8.BackColor = SystemColors.ActiveCaptionText;
             label8.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(60, 150);
+            label8.Location = new Point(60, 130);
             label8.Name = "label8";
             label8.Size = new Size(600, 2);
             label8.TabIndex = 5;
@@ -231,7 +282,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(60, 328);
+            label7.Location = new Point(60, 293);
             label7.Name = "label7";
             label7.Size = new Size(76, 30);
             label7.TabIndex = 4;
@@ -241,7 +292,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(60, 220);
+            label6.Location = new Point(60, 188);
             label6.Name = "label6";
             label6.Size = new Size(95, 25);
             label6.TabIndex = 3;
@@ -251,7 +302,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(60, 172);
+            label5.Location = new Point(60, 147);
             label5.Name = "label5";
             label5.Size = new Size(91, 25);
             label5.TabIndex = 2;
@@ -261,7 +312,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(60, 105);
+            label4.Location = new Point(60, 89);
             label4.Name = "label4";
             label4.Size = new Size(66, 25);
             label4.TabIndex = 1;
@@ -271,7 +322,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(246, 41);
+            label3.Location = new Point(246, 27);
             label3.Name = "label3";
             label3.Size = new Size(217, 28);
             label3.TabIndex = 0;
@@ -280,8 +331,7 @@
             // groupBox3
             // 
             groupBox3.BackColor = Color.White;
-            groupBox3.Controls.Add(cancel_transaction_button);
-            groupBox3.Controls.Add(exit_button);
+            groupBox3.Controls.Add(sales_reports_button);
             groupBox3.Controls.Add(dataGridView1);
             groupBox3.Controls.Add(process_payment_button);
             groupBox3.Location = new Point(1456, 154);
@@ -291,31 +341,19 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Product scanned list";
             // 
-            // cancel_transaction_button
+            // sales_reports_button
             // 
-            cancel_transaction_button.BackColor = Color.IndianRed;
-            cancel_transaction_button.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cancel_transaction_button.ForeColor = Color.White;
-            cancel_transaction_button.Location = new Point(6, 748);
-            cancel_transaction_button.Name = "cancel_transaction_button";
-            cancel_transaction_button.Size = new Size(218, 58);
-            cancel_transaction_button.TabIndex = 164;
-            cancel_transaction_button.Text = "CANCEL";
-            cancel_transaction_button.UseVisualStyleBackColor = false;
-            cancel_transaction_button.Click += cancel_transaction_button_Click;
-            // 
-            // exit_button
-            // 
-            exit_button.BackColor = Color.Gray;
-            exit_button.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            exit_button.ForeColor = Color.White;
-            exit_button.Location = new Point(230, 748);
-            exit_button.Name = "exit_button";
-            exit_button.Size = new Size(220, 58);
-            exit_button.TabIndex = 163;
-            exit_button.Text = "EXIT";
-            exit_button.UseVisualStyleBackColor = false;
-            exit_button.Click += exit_button_Click;
+            sales_reports_button.BackColor = Color.MediumSeaGreen;
+            sales_reports_button.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
+            sales_reports_button.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            sales_reports_button.ForeColor = Color.White;
+            sales_reports_button.Location = new Point(6, 748);
+            sales_reports_button.Name = "sales_reports_button";
+            sales_reports_button.Size = new Size(444, 59);
+            sales_reports_button.TabIndex = 166;
+            sales_reports_button.Text = "Sales Reports";
+            sales_reports_button.UseVisualStyleBackColor = false;
+            sales_reports_button.Click += receipt_button_Click;
             // 
             // dataGridView1
             // 
@@ -338,6 +376,32 @@
             process_payment_button.Text = "Process Payment";
             process_payment_button.UseVisualStyleBackColor = false;
             process_payment_button.Click += process_payment_button_Click;
+            // 
+            // cancel_transaction_button
+            // 
+            cancel_transaction_button.BackColor = Color.IndianRed;
+            cancel_transaction_button.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cancel_transaction_button.ForeColor = Color.White;
+            cancel_transaction_button.Location = new Point(763, 908);
+            cancel_transaction_button.Name = "cancel_transaction_button";
+            cancel_transaction_button.Size = new Size(225, 58);
+            cancel_transaction_button.TabIndex = 164;
+            cancel_transaction_button.Text = "CANCEL";
+            cancel_transaction_button.UseVisualStyleBackColor = false;
+            cancel_transaction_button.Click += cancel_transaction_button_Click;
+            // 
+            // exit_button
+            // 
+            exit_button.BackColor = Color.Gray;
+            exit_button.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            exit_button.ForeColor = Color.White;
+            exit_button.Location = new Point(1225, 908);
+            exit_button.Name = "exit_button";
+            exit_button.Size = new Size(225, 58);
+            exit_button.TabIndex = 163;
+            exit_button.Text = "EXIT";
+            exit_button.UseVisualStyleBackColor = false;
+            exit_button.Click += exit_button_Click;
             // 
             // cashier_name_txtbox
             // 
@@ -376,7 +440,7 @@
             groupBox4.ForeColor = SystemColors.ControlText;
             groupBox4.Location = new Point(12, 281);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(745, 234);
+            groupBox4.Size = new Size(745, 176);
             groupBox4.TabIndex = 7;
             groupBox4.TabStop = false;
             groupBox4.Text = "Scanned Item";
@@ -385,7 +449,7 @@
             // 
             barcode_txtbox.BackColor = Color.White;
             barcode_txtbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            barcode_txtbox.Location = new Point(60, 109);
+            barcode_txtbox.Location = new Point(58, 84);
             barcode_txtbox.Name = "barcode_txtbox";
             barcode_txtbox.Size = new Size(437, 33);
             barcode_txtbox.TabIndex = 2;
@@ -395,7 +459,7 @@
             // 
             scanned_item_price_txtbox.BackColor = Color.White;
             scanned_item_price_txtbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            scanned_item_price_txtbox.Location = new Point(58, 161);
+            scanned_item_price_txtbox.Location = new Point(58, 123);
             scanned_item_price_txtbox.Name = "scanned_item_price_txtbox";
             scanned_item_price_txtbox.Size = new Size(197, 33);
             scanned_item_price_txtbox.TabIndex = 1;
@@ -405,7 +469,7 @@
             scanned_item_name_txtbox.BackColor = Color.White;
             scanned_item_name_txtbox.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             scanned_item_name_txtbox.ForeColor = SystemColors.WindowText;
-            scanned_item_name_txtbox.Location = new Point(58, 48);
+            scanned_item_name_txtbox.Location = new Point(58, 35);
             scanned_item_name_txtbox.Name = "scanned_item_name_txtbox";
             scanned_item_name_txtbox.Size = new Size(439, 43);
             scanned_item_name_txtbox.TabIndex = 0;
@@ -632,6 +696,7 @@
             cash_checkbox.Text = "Cash";
             cash_checkbox.TextAlign = ContentAlignment.MiddleCenter;
             cash_checkbox.UseVisualStyleBackColor = false;
+            cash_checkbox.CheckedChanged += cash_checkbox_CheckedChanged;
             // 
             // card_checkbox
             // 
@@ -645,6 +710,7 @@
             card_checkbox.Text = "Card";
             card_checkbox.TextAlign = ContentAlignment.MiddleCenter;
             card_checkbox.UseVisualStyleBackColor = false;
+            card_checkbox.CheckedChanged += card_checkbox_CheckedChanged;
             // 
             // QR_checkbox
             // 
@@ -658,6 +724,7 @@
             QR_checkbox.Text = "QR";
             QR_checkbox.TextAlign = ContentAlignment.MiddleCenter;
             QR_checkbox.UseVisualStyleBackColor = false;
+            QR_checkbox.CheckedChanged += QR_checkbox_CheckedChanged;
             // 
             // label2
             // 
@@ -680,12 +747,28 @@
             label12.TabIndex = 34;
             label12.Text = "Date Today: ";
             // 
+            // inventory_button
+            // 
+            inventory_button.BackColor = Color.Tan;
+            inventory_button.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            inventory_button.ForeColor = Color.White;
+            inventory_button.Location = new Point(994, 908);
+            inventory_button.Name = "inventory_button";
+            inventory_button.Size = new Size(225, 58);
+            inventory_button.TabIndex = 165;
+            inventory_button.Text = "INVENTORY";
+            inventory_button.UseVisualStyleBackColor = false;
+            inventory_button.Click += inventory_button_Click;
+            // 
             // cashier_interface
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gainsboro;
             ClientSize = new Size(1924, 1041);
+            Controls.Add(inventory_button);
+            Controls.Add(exit_button);
+            Controls.Add(cancel_transaction_button);
             Controls.Add(label12);
             Controls.Add(label2);
             Controls.Add(QR_checkbox);
@@ -782,5 +865,11 @@
         private TextBox vat_txtbox;
         private Label label12;
         public DataGridView dataGridView1;
+        private Button inventory_button;
+        private Button sales_reports_button;
+        private Label change_label;
+        private Label cash_label;
+        public TextBox change_txtbox;
+        public TextBox cash_txtbox;
     }
 }

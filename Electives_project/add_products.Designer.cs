@@ -29,6 +29,14 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            remove_barcode_pic4 = new Button();
+            remove_barcode_pic3 = new Button();
+            remove_barcode_pic2 = new Button();
+            remove_barcode_pic1 = new Button();
+            remove_product_pic4 = new Button();
+            remove_product_pic3 = new Button();
+            remove_product_pic2 = new Button();
+            remove_product_pic1 = new Button();
             barcode_picpath4 = new TextBox();
             barcode_picpath3 = new TextBox();
             barcode_picpath2 = new TextBox();
@@ -118,6 +126,7 @@
             exit_button = new Button();
             generate_barcode_button = new Button();
             back_button = new Button();
+            clear_button = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)barcode_picbox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)barcode_picbox3).BeginInit();
@@ -135,6 +144,14 @@
             // groupBox1
             // 
             groupBox1.BackColor = SystemColors.Control;
+            groupBox1.Controls.Add(remove_barcode_pic4);
+            groupBox1.Controls.Add(remove_barcode_pic3);
+            groupBox1.Controls.Add(remove_barcode_pic2);
+            groupBox1.Controls.Add(remove_barcode_pic1);
+            groupBox1.Controls.Add(remove_product_pic4);
+            groupBox1.Controls.Add(remove_product_pic3);
+            groupBox1.Controls.Add(remove_product_pic2);
+            groupBox1.Controls.Add(remove_product_pic1);
             groupBox1.Controls.Add(barcode_picpath4);
             groupBox1.Controls.Add(barcode_picpath3);
             groupBox1.Controls.Add(barcode_picpath2);
@@ -215,13 +232,103 @@
             groupBox1.Controls.Add(product_picBox3);
             groupBox1.Controls.Add(product_picBox2);
             groupBox1.Controls.Add(product_picBox1);
+            groupBox1.FlatStyle = FlatStyle.Flat;
             groupBox1.Location = new Point(12, 154);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1571, 801);
+            groupBox1.Size = new Size(1571, 804);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Input product details";
             groupBox1.Enter += groupBox1_Enter;
+            // 
+            // remove_barcode_pic4
+            // 
+            remove_barcode_pic4.FlatStyle = FlatStyle.Flat;
+            remove_barcode_pic4.Location = new Point(1377, 442);
+            remove_barcode_pic4.Name = "remove_barcode_pic4";
+            remove_barcode_pic4.Size = new Size(75, 34);
+            remove_barcode_pic4.TabIndex = 169;
+            remove_barcode_pic4.Text = "remove";
+            remove_barcode_pic4.UseVisualStyleBackColor = true;
+            remove_barcode_pic4.Click += remove_barcode_pic4_Click;
+            // 
+            // remove_barcode_pic3
+            // 
+            remove_barcode_pic3.FlatStyle = FlatStyle.Flat;
+            remove_barcode_pic3.Location = new Point(968, 442);
+            remove_barcode_pic3.Name = "remove_barcode_pic3";
+            remove_barcode_pic3.Size = new Size(75, 34);
+            remove_barcode_pic3.TabIndex = 168;
+            remove_barcode_pic3.Text = "remove";
+            remove_barcode_pic3.UseVisualStyleBackColor = true;
+            remove_barcode_pic3.Click += remove_barcode_pic3_Click;
+            // 
+            // remove_barcode_pic2
+            // 
+            remove_barcode_pic2.FlatStyle = FlatStyle.Flat;
+            remove_barcode_pic2.Location = new Point(546, 442);
+            remove_barcode_pic2.Name = "remove_barcode_pic2";
+            remove_barcode_pic2.Size = new Size(75, 34);
+            remove_barcode_pic2.TabIndex = 167;
+            remove_barcode_pic2.Text = "remove";
+            remove_barcode_pic2.UseVisualStyleBackColor = true;
+            remove_barcode_pic2.Click += remove_barcode_pic2_Click;
+            // 
+            // remove_barcode_pic1
+            // 
+            remove_barcode_pic1.FlatStyle = FlatStyle.Flat;
+            remove_barcode_pic1.Location = new Point(124, 442);
+            remove_barcode_pic1.Name = "remove_barcode_pic1";
+            remove_barcode_pic1.Size = new Size(75, 34);
+            remove_barcode_pic1.TabIndex = 166;
+            remove_barcode_pic1.Text = "remove";
+            remove_barcode_pic1.UseVisualStyleBackColor = true;
+            remove_barcode_pic1.Click += remove_barcode_pic1_Click;
+            // 
+            // remove_product_pic4
+            // 
+            remove_product_pic4.FlatStyle = FlatStyle.Flat;
+            remove_product_pic4.Location = new Point(1377, 205);
+            remove_product_pic4.Name = "remove_product_pic4";
+            remove_product_pic4.Size = new Size(75, 32);
+            remove_product_pic4.TabIndex = 165;
+            remove_product_pic4.Text = "remove";
+            remove_product_pic4.UseVisualStyleBackColor = true;
+            remove_product_pic4.Click += remove_product_pic4_Click;
+            // 
+            // remove_product_pic3
+            // 
+            remove_product_pic3.FlatStyle = FlatStyle.Flat;
+            remove_product_pic3.Location = new Point(968, 205);
+            remove_product_pic3.Name = "remove_product_pic3";
+            remove_product_pic3.Size = new Size(75, 32);
+            remove_product_pic3.TabIndex = 164;
+            remove_product_pic3.Text = "remove";
+            remove_product_pic3.UseVisualStyleBackColor = true;
+            remove_product_pic3.Click += remove_product_pic3_Click;
+            // 
+            // remove_product_pic2
+            // 
+            remove_product_pic2.FlatStyle = FlatStyle.Flat;
+            remove_product_pic2.Location = new Point(546, 205);
+            remove_product_pic2.Name = "remove_product_pic2";
+            remove_product_pic2.Size = new Size(75, 32);
+            remove_product_pic2.TabIndex = 163;
+            remove_product_pic2.Text = "remove";
+            remove_product_pic2.UseVisualStyleBackColor = true;
+            remove_product_pic2.Click += button1_Click;
+            // 
+            // remove_product_pic1
+            // 
+            remove_product_pic1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            remove_product_pic1.FlatStyle = FlatStyle.Flat;
+            remove_product_pic1.Location = new Point(124, 205);
+            remove_product_pic1.Name = "remove_product_pic1";
+            remove_product_pic1.Size = new Size(75, 35);
+            remove_product_pic1.TabIndex = 162;
+            remove_product_pic1.Text = "remove";
+            remove_product_pic1.UseVisualStyleBackColor = true;
+            remove_product_pic1.Click += remove_product_pic1_Click;
             // 
             // barcode_picpath4
             // 
@@ -932,6 +1039,7 @@
             product_picBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             product_picBox1.TabIndex = 0;
             product_picBox1.TabStop = false;
+            product_picBox1.Click += product_picBox1_Click;
             // 
             // groupBox2
             // 
@@ -971,7 +1079,7 @@
             add_products_button.BackColor = Color.YellowGreen;
             add_products_button.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             add_products_button.ForeColor = Color.White;
-            add_products_button.Location = new Point(1589, 833);
+            add_products_button.Location = new Point(1589, 708);
             add_products_button.Name = "add_products_button";
             add_products_button.Size = new Size(323, 58);
             add_products_button.TabIndex = 21;
@@ -985,7 +1093,7 @@
             groupBox3.Controls.Add(dataGridView1);
             groupBox3.Location = new Point(1589, 154);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(323, 673);
+            groupBox3.Size = new Size(323, 548);
             groupBox3.TabIndex = 22;
             groupBox3.TabStop = false;
             groupBox3.Text = "Database Status";
@@ -995,7 +1103,7 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(6, 25);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(311, 639);
+            dataGridView1.Size = new Size(311, 511);
             dataGridView1.TabIndex = 0;
             // 
             // exit_button
@@ -1003,9 +1111,9 @@
             exit_button.BackColor = Color.Gray;
             exit_button.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             exit_button.ForeColor = Color.White;
-            exit_button.Location = new Point(1589, 961);
+            exit_button.Location = new Point(1589, 900);
             exit_button.Name = "exit_button";
-            exit_button.Size = new Size(155, 58);
+            exit_button.Size = new Size(156, 58);
             exit_button.TabIndex = 24;
             exit_button.Text = "EXIT";
             exit_button.UseVisualStyleBackColor = false;
@@ -1016,9 +1124,9 @@
             generate_barcode_button.BackColor = Color.Coral;
             generate_barcode_button.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             generate_barcode_button.ForeColor = Color.White;
-            generate_barcode_button.Location = new Point(1589, 897);
+            generate_barcode_button.Location = new Point(1589, 772);
             generate_barcode_button.Name = "generate_barcode_button";
-            generate_barcode_button.Size = new Size(317, 58);
+            generate_barcode_button.Size = new Size(323, 58);
             generate_barcode_button.TabIndex = 25;
             generate_barcode_button.Text = "GENERATE BARCODE";
             generate_barcode_button.UseVisualStyleBackColor = false;
@@ -1029,13 +1137,26 @@
             back_button.BackColor = Color.IndianRed;
             back_button.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             back_button.ForeColor = Color.White;
-            back_button.Location = new Point(1751, 961);
+            back_button.Location = new Point(1751, 900);
             back_button.Name = "back_button";
-            back_button.Size = new Size(155, 58);
+            back_button.Size = new Size(161, 58);
             back_button.TabIndex = 162;
             back_button.Text = "BACK";
             back_button.UseVisualStyleBackColor = false;
             back_button.Click += back_button_Click;
+            // 
+            // clear_button
+            // 
+            clear_button.BackColor = Color.DarkSeaGreen;
+            clear_button.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            clear_button.ForeColor = Color.White;
+            clear_button.Location = new Point(1589, 836);
+            clear_button.Name = "clear_button";
+            clear_button.Size = new Size(323, 58);
+            clear_button.TabIndex = 163;
+            clear_button.Text = "CLEAR";
+            clear_button.UseVisualStyleBackColor = false;
+            clear_button.Click += button2_Click;
             // 
             // add_products
             // 
@@ -1043,6 +1164,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gainsboro;
             ClientSize = new Size(1924, 1041);
+            Controls.Add(clear_button);
             Controls.Add(back_button);
             Controls.Add(generate_barcode_button);
             Controls.Add(exit_button);
@@ -1175,5 +1297,14 @@
         private Label label33;
         private Label label32;
         private Button back_button;
+        private Button remove_product_pic1;
+        private Button clear_button;
+        private Button remove_barcode_pic4;
+        private Button remove_barcode_pic3;
+        private Button remove_barcode_pic2;
+        private Button remove_barcode_pic1;
+        private Button remove_product_pic4;
+        private Button remove_product_pic3;
+        private Button remove_product_pic2;
     }
 }

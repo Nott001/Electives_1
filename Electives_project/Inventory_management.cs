@@ -24,11 +24,10 @@ namespace Electives_project
 
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.MultiSelect = false;
-            dataGridView1.ReadOnly = true;
+            dataGridView1.ReadOnly = false;
 
             // 1. Manually link the events here to ensure they are connected
             this.dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellContentClick);
-            this.product_image_picturebox.Click += new EventHandler(product_image_picturebox_Click);
 
             // 2. Set Grid Properties for better selection
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -71,11 +70,6 @@ namespace Electives_project
             db.inventory_sqldatasetSELECT();
             dataGridView1.DataSource = db.inventory_sql_dataset.Tables["Product"];
             db.inventory_sql_connection.Close();
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -132,7 +126,7 @@ namespace Electives_project
                 {
                     query = $"SELECT * FROM Product WHERE product_id = '{searchValue}'";
                 }
-                else // Search by Name with partial match (LIKE)
+                else // Search by Name with partial match
                 {
                     query = $"SELECT * FROM Product WHERE product_name LIKE '%{searchValue}%'";
                 }
@@ -152,12 +146,13 @@ namespace Electives_project
                 db.inventory_connString();
                 // Update specific product based on the current row's data
                 db.inventory_sql = "UPDATE Product SET product_name = @name, unit_price = @price, " +
-                                   "stock_quantity = @stock, manufacturer = @manu,  WHERE product_id = @id";
+                                   "stock_quantity = @stock, manufacturer = @manu WHERE product_id = @id";
 
                 db.inventory_cmd();
                 db.inventory_sql_command.Parameters.AddWithValue("@name", currentRow.Cells["product_name"].Value);
                 db.inventory_sql_command.Parameters.AddWithValue("@price", currentRow.Cells["unit_price"].Value);
                 db.inventory_sql_command.Parameters.AddWithValue("@stock", currentRow.Cells["stock_quantity"].Value);
+                db.inventory_sql_command.Parameters.AddWithValue("@manu", currentRow.Cells["manufacturer"].Value);
                 db.inventory_sql_command.Parameters.AddWithValue("@id", id);
 
                 db.inventory_sql_command.ExecuteNonQuery();
@@ -201,10 +196,6 @@ namespace Electives_project
             add_products add_products_button = new add_products();
             add_products_button.ShowDialog();
             this.Close();
-        }
-
-        private void product_image_picturebox_Click(object sender, EventArgs e)
-        {
         }
     }
 }

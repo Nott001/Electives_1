@@ -110,7 +110,6 @@
             label10.Size = new Size(202, 19);
             label10.TabIndex = 2;
             label10.Text = "Inventory Management System";
-            label10.Click += label10_Click;
             // 
             // label1
             // 
@@ -225,7 +224,6 @@
             product_image_picturebox.SizeMode = PictureBoxSizeMode.CenterImage;
             product_image_picturebox.TabIndex = 0;
             product_image_picturebox.TabStop = false;
-            product_image_picturebox.Click += product_image_picturebox_Click;
             // 
             // groupBox4
             // 

@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             groupBox2 = new GroupBox();
+            total_amount_txtbox = new TextBox();
+            vat_txtbox = new TextBox();
+            discount_txtbox = new TextBox();
+            subtotal_txtbox = new TextBox();
+            total_items_txtbox = new TextBox();
             label4 = new Label();
             label2 = new Label();
             dataGridView1 = new DataGridView();
@@ -39,11 +44,10 @@
             lblDiscount = new Label();
             groupBox1 = new GroupBox();
             label1 = new Label();
-            total_items_txtbox = new TextBox();
-            subtotal_txtbox = new TextBox();
-            discount_txtbox = new TextBox();
-            vat_txtbox = new TextBox();
-            total_amount_txtbox = new TextBox();
+            label5 = new Label();
+            label6 = new Label();
+            cash_txtbox = new TextBox();
+            change_txtbox = new TextBox();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
@@ -51,6 +55,10 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(change_txtbox);
+            groupBox2.Controls.Add(cash_txtbox);
+            groupBox2.Controls.Add(label6);
+            groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(total_amount_txtbox);
             groupBox2.Controls.Add(vat_txtbox);
             groupBox2.Controls.Add(discount_txtbox);
@@ -66,9 +74,55 @@
             groupBox2.Controls.Add(lblDiscount);
             groupBox2.Location = new Point(12, 118);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(676, 559);
+            groupBox2.Size = new Size(676, 620);
             groupBox2.TabIndex = 16;
             groupBox2.TabStop = false;
+            // 
+            // total_amount_txtbox
+            // 
+            total_amount_txtbox.BackColor = SystemColors.Control;
+            total_amount_txtbox.BorderStyle = BorderStyle.None;
+            total_amount_txtbox.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            total_amount_txtbox.Location = new Point(346, 490);
+            total_amount_txtbox.Name = "total_amount_txtbox";
+            total_amount_txtbox.Size = new Size(184, 20);
+            total_amount_txtbox.TabIndex = 23;
+            // 
+            // vat_txtbox
+            // 
+            vat_txtbox.BackColor = SystemColors.Control;
+            vat_txtbox.BorderStyle = BorderStyle.None;
+            vat_txtbox.Location = new Point(346, 422);
+            vat_txtbox.Name = "vat_txtbox";
+            vat_txtbox.Size = new Size(184, 19);
+            vat_txtbox.TabIndex = 22;
+            // 
+            // discount_txtbox
+            // 
+            discount_txtbox.BackColor = SystemColors.Control;
+            discount_txtbox.BorderStyle = BorderStyle.None;
+            discount_txtbox.Location = new Point(346, 388);
+            discount_txtbox.Name = "discount_txtbox";
+            discount_txtbox.Size = new Size(184, 19);
+            discount_txtbox.TabIndex = 21;
+            // 
+            // subtotal_txtbox
+            // 
+            subtotal_txtbox.BackColor = SystemColors.Control;
+            subtotal_txtbox.BorderStyle = BorderStyle.None;
+            subtotal_txtbox.Location = new Point(346, 352);
+            subtotal_txtbox.Name = "subtotal_txtbox";
+            subtotal_txtbox.Size = new Size(184, 19);
+            subtotal_txtbox.TabIndex = 20;
+            // 
+            // total_items_txtbox
+            // 
+            total_items_txtbox.BackColor = SystemColors.Control;
+            total_items_txtbox.BorderStyle = BorderStyle.None;
+            total_items_txtbox.Location = new Point(346, 317);
+            total_items_txtbox.Name = "total_items_txtbox";
+            total_items_txtbox.Size = new Size(184, 19);
+            total_items_txtbox.TabIndex = 19;
             // 
             // label4
             // 
@@ -96,9 +150,9 @@
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(67, 26);
+            dataGridView1.Location = new Point(132, 25);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(563, 248);
+            dataGridView1.Size = new Size(312, 248);
             dataGridView1.TabIndex = 16;
             // 
             // label3
@@ -107,7 +161,7 @@
             label3.Font = new Font("Microsoft Sans Serif", 500F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.Location = new Point(30, 463);
             label3.Name = "label3";
-            label3.Size = new Size(600, 2);
+            label3.Size = new Size(500, 2);
             label3.TabIndex = 15;
             label3.Text = "VillaCorp";
             // 
@@ -117,7 +171,7 @@
             label13.Font = new Font("Microsoft Sans Serif", 500F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label13.Location = new Point(30, 294);
             label13.Name = "label13";
-            label13.Size = new Size(600, 2);
+            label13.Size = new Size(500, 2);
             label13.TabIndex = 13;
             label13.Text = "VillaCorp";
             // 
@@ -170,57 +224,51 @@
             label1.TabIndex = 1;
             label1.Text = "VillaCorp";
             // 
-            // total_items_txtbox
+            // label5
             // 
-            total_items_txtbox.BackColor = SystemColors.Control;
-            total_items_txtbox.BorderStyle = BorderStyle.None;
-            total_items_txtbox.Location = new Point(446, 315);
-            total_items_txtbox.Name = "total_items_txtbox";
-            total_items_txtbox.Size = new Size(184, 19);
-            total_items_txtbox.TabIndex = 19;
+            label5.AutoSize = true;
+            label5.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(67, 533);
+            label5.Name = "label5";
+            label5.Size = new Size(51, 18);
+            label5.TabIndex = 24;
+            label5.Text = "Cash: ";
             // 
-            // subtotal_txtbox
+            // label6
             // 
-            subtotal_txtbox.BackColor = SystemColors.Control;
-            subtotal_txtbox.BorderStyle = BorderStyle.None;
-            subtotal_txtbox.Location = new Point(446, 350);
-            subtotal_txtbox.Name = "subtotal_txtbox";
-            subtotal_txtbox.Size = new Size(184, 19);
-            subtotal_txtbox.TabIndex = 20;
+            label6.AutoSize = true;
+            label6.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Location = new Point(67, 573);
+            label6.Name = "label6";
+            label6.Size = new Size(75, 18);
+            label6.TabIndex = 25;
+            label6.Text = "Change: ";
             // 
-            // discount_txtbox
+            // cash_txtbox
             // 
-            discount_txtbox.BackColor = SystemColors.Control;
-            discount_txtbox.BorderStyle = BorderStyle.None;
-            discount_txtbox.Location = new Point(446, 385);
-            discount_txtbox.Name = "discount_txtbox";
-            discount_txtbox.Size = new Size(184, 19);
-            discount_txtbox.TabIndex = 21;
+            cash_txtbox.BackColor = SystemColors.Control;
+            cash_txtbox.BorderStyle = BorderStyle.None;
+            cash_txtbox.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cash_txtbox.Location = new Point(346, 531);
+            cash_txtbox.Name = "cash_txtbox";
+            cash_txtbox.Size = new Size(184, 20);
+            cash_txtbox.TabIndex = 26;
             // 
-            // vat_txtbox
+            // change_txtbox
             // 
-            vat_txtbox.BackColor = SystemColors.Control;
-            vat_txtbox.BorderStyle = BorderStyle.None;
-            vat_txtbox.Location = new Point(446, 420);
-            vat_txtbox.Name = "vat_txtbox";
-            vat_txtbox.Size = new Size(184, 19);
-            vat_txtbox.TabIndex = 22;
-            // 
-            // total_amount_txtbox
-            // 
-            total_amount_txtbox.BackColor = SystemColors.Control;
-            total_amount_txtbox.BorderStyle = BorderStyle.None;
-            total_amount_txtbox.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            total_amount_txtbox.Location = new Point(446, 489);
-            total_amount_txtbox.Name = "total_amount_txtbox";
-            total_amount_txtbox.Size = new Size(184, 20);
-            total_amount_txtbox.TabIndex = 23;
+            change_txtbox.BackColor = SystemColors.Control;
+            change_txtbox.BorderStyle = BorderStyle.None;
+            change_txtbox.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            change_txtbox.Location = new Point(346, 571);
+            change_txtbox.Name = "change_txtbox";
+            change_txtbox.Size = new Size(184, 20);
+            change_txtbox.TabIndex = 27;
             // 
             // receipt_print
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 700);
+            ClientSize = new Size(700, 750);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "receipt_print";
@@ -255,5 +303,9 @@
         public TextBox total_items_txtbox;
         public TextBox textBox6;
         public TextBox textBox2;
+        public TextBox change_txtbox;
+        public TextBox cash_txtbox;
+        private Label label6;
+        private Label label5;
     }
 }

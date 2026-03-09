@@ -44,27 +44,6 @@ namespace Electives_project
             inventory_sql_command.ExecuteNonQuery();
         }
 
-        public void inventory_sqladapterInsert() //public function codes for mediating between C# language and the MSSQL INSERT command
-        {
-            inventory_sql_dataadapter = new SqlDataAdapter();
-            inventory_sql_dataadapter.InsertCommand = inventory_sql_command;
-            inventory_sql_command.ExecuteNonQuery();
-        }
-
-        public void inventory_sqladapterDelete() //public function codes for mediating between C# language and the MSSQL DELETE command
-        {
-            inventory_sql_dataadapter = new SqlDataAdapter();
-            inventory_sql_dataadapter.DeleteCommand = inventory_sql_command;
-            inventory_sql_command.ExecuteNonQuery();
-        }
-
-        public void inventory_sqladapterUpdate() //public function codes for mediating between C# language and the MSSQL UPDATE command
-        {
-            inventory_sql_dataadapter = new SqlDataAdapter();
-            inventory_sql_dataadapter.UpdateCommand = inventory_sql_command;
-            inventory_sql_command.ExecuteNonQuery();
-        }
-
         public void inventory_sqldatasetSELECT() //codes for mirroring the contents of the database inside MSSQL to C# or Visual Studio
         {
             inventory_sql_dataset = new DataSet();

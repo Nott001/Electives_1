@@ -8,6 +8,7 @@ using ZXing;
 using ZXing.Common;
 using ZXing.Windows.Compatibility;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Electives_project
 {
@@ -26,5 +27,31 @@ namespace Electives_project
                 }
             }
         }
+
+        public static void ClearPictureBox(PictureBox pb)
+        {
+            if (pb.Image == null) return;
+            pb.Image.Dispose();
+            pb.Image = null;
+        }
+
+        public static void ClearControls(Control parent)
+        {
+            foreach (Control c in parent.Controls)
+            {
+                if (c is TextBox)
+                    ((TextBox)c).Clear();
+                if (c is PictureBox pb)
+                {
+                    if (pb.Image != null)
+                    {
+                        pb.Image.Dispose();
+                        pb.Image = null;
+                    }
+                }
+                if (c.HasChildren)
+                    ClearControls(c);
+            }
+        }    
     }
 }

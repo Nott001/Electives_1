@@ -16,17 +16,6 @@ namespace Electives_project
 
         // Global Session Data
         public static int LoggedInCashierId { get; set; } = 1;
-        public static string LoggedInCashierName { get; set; } = "Unknown";
-
-        // Use a class or struct to hold item details for better grouping
-        public class CartItem
-        {
-            public int ProductId { get; set; }
-            public string Name { get; set; }
-            public int Quantity { get; set; }
-            public decimal UnitPrice { get; set; }
-            public decimal Subtotal => Quantity * UnitPrice;
-        }
 
         public (decimal subtotal, decimal discount, decimal total, decimal vat)
         GetCalculations(decimal subtotal, bool isSenior, bool isPWD, bool isVoucher)
@@ -46,20 +35,23 @@ namespace Electives_project
             return (subtotal, discountAmount, total, vatAmount);
         }
 
-
-        public List<CartItem> Cart = new List<CartItem>();
-
-        public void AddOrUpdateProduct(int id, string name, decimal price)
+        public static string CalculateChange(string cashText, string totalText)
         {
-            var existingItem = Cart.FirstOrDefault(i => i.ProductId == id);
-            if (existingItem != null)
+            // 1. Attempt to parse both inputs
+            bool isCashValid = decimal.TryParse(cashText, out decimal cash);
+            bool isTotalValid = decimal.TryParse(totalText, out decimal total);
+
+            // 2. Perform calculation only if both are valid
+            if (isCashValid && isTotalValid)
             {
-                existingItem.Quantity += 1; // Increment quantity if found
+                decimal change = cash - total;
+
+                // Return formatted as a number with 2 decimal places
+                // If change is negative, you can handle it here (e.g., return "0.00")
+                return change >= 0 ? change.ToString("N2") : "0.00";
             }
-            else
-            {
-                Cart.Add(new CartItem { ProductId = id, Name = name, UnitPrice = price, Quantity = 1 });
-            }
+
+            return "0.00";
         }
     }
 }
