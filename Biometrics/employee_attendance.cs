@@ -234,9 +234,9 @@ namespace Biometrics
             connection.Open();
 
             const string selectSql = @"
-SELECT emp_id, emp_fname, emp_mname, emp_surname, emp_department, picpath, Fingerprint_picpath, FingerprintTemplate
-FROM pos_empRegTbl
-WHERE FingerprintTemplate IS NOT NULL";
+                SELECT emp_id, emp_fname, emp_mname, emp_surname, emp_department, picpath, Fingerprint_picpath, FingerprintTemplate
+                FROM pos_empRegTbl
+                WHERE FingerprintTemplate IS NOT NULL";
 
             using SqlCommand command = new SqlCommand(selectSql, connection);
             using SqlDataReader reader = command.ExecuteReader();
@@ -349,10 +349,10 @@ WHERE FingerprintTemplate IS NOT NULL";
             DateTime today = now.Date;
 
             const string selectSql = @"
-SELECT TOP 1 attendance_id, time_in, time_out
-FROM attendanceTbl
-WHERE emp_id = @emp_id AND log_date = @log_date
-ORDER BY attendance_id DESC";
+                SELECT TOP 1 attendance_id, time_in, time_out
+                FROM attendanceTbl
+                WHERE emp_id = @emp_id AND log_date = @log_date
+                ORDER BY attendance_id DESC";
 
             using SqlCommand selectCommand = new SqlCommand(selectSql, connection);
             selectCommand.Parameters.AddWithValue("@emp_id", empId);
@@ -382,8 +382,8 @@ ORDER BY attendance_id DESC";
             if (attendanceId == null || timeOut != null)
             {
                 const string insertSql = @"
-INSERT INTO attendanceTbl (emp_id, log_date, time_in, attendance_status, verification_mode)
-VALUES (@emp_id, @log_date, @time_in, @attendance_status, @verification_mode)";
+                    INSERT INTO attendanceTbl (emp_id, log_date, time_in, attendance_status, verification_mode)
+                    VALUES (@emp_id, @log_date, @time_in, @attendance_status, @verification_mode)";
 
                 using SqlCommand insertCommand = new SqlCommand(insertSql, connection);
                 insertCommand.Parameters.AddWithValue("@emp_id", empId);
@@ -400,10 +400,10 @@ VALUES (@emp_id, @log_date, @time_in, @attendance_status, @verification_mode)";
             else
             {
                 const string updateSql = @"
-UPDATE attendanceTbl
-SET time_out = @time_out,
-    attendance_status = @attendance_status
-WHERE attendance_id = @attendance_id";
+                    UPDATE attendanceTbl
+                    SET time_out = @time_out,
+                    attendance_status = @attendance_status
+                    WHERE attendance_id = @attendance_id";
 
                 using SqlCommand updateCommand = new SqlCommand(updateSql, connection);
                 updateCommand.Parameters.AddWithValue("@time_out", now);

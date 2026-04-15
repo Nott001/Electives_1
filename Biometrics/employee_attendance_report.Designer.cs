@@ -64,6 +64,7 @@
             search_employee_button.TabIndex = 46;
             search_employee_button.Text = "Search Employee";
             search_employee_button.UseVisualStyleBackColor = true;
+            search_employee_button.Click += search_employee_button_Click;
             // 
             // search_employee_txtbox
             // 
@@ -72,6 +73,7 @@
             search_employee_txtbox.Name = "search_employee_txtbox";
             search_employee_txtbox.Size = new Size(470, 29);
             search_employee_txtbox.TabIndex = 45;
+            search_employee_txtbox.KeyDown += search_employee_txtbox_KeyDown;
             // 
             // groupBox1
             // 
@@ -99,8 +101,9 @@
             exit_button.TabIndex = 49;
             exit_button.Text = "Exit";
             exit_button.UseVisualStyleBackColor = true;
+            exit_button.Click += exit_button_Click;
             // 
-            // employee_attendance
+            // employee_attendance_report
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -111,8 +114,9 @@
             Controls.Add(search_employee_button);
             Controls.Add(search_employee_txtbox);
             Controls.Add(groupBox3);
-            Name = "employee_attendance";
-            Text = "employee_attendance";
+            Name = "employee_attendance_report";
+            Text = "employee_attendance_report";
+            Load += employee_attendance_report_Load;
             WindowState = FormWindowState.Maximized;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
